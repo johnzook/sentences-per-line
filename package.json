@@ -46,7 +46,7 @@
 		"lint:md": "markdownlint \"**/*.md\" \".github/**/*.md\" --rules .",
 		"lint:packages": "pnpm dedupe --check",
 		"lint:spelling": "cspell \"**\" \".github/**/*\"",
-		"prepare": "husky",
+		"prepare": "husky && npm run build",
 		"should-semantic-release": "should-semantic-release --verbose",
 		"test": "vitest",
 		"tsc": "tsc"
