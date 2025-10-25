@@ -34,6 +34,32 @@ describe("sentences-per-line", () => {
 				lineNumber: 1,
 			},
 		],
+		[
+			"Abc def! Ghi jkl.",
+			"Abc def! Ghi j",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 9,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"Abc def? Ghi jkl!",
+			"Abc def? Ghi j",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 9,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
 		["A single sentence A.B.C.", undefined],
 		["Continuation... of this topic.", undefined],
 		["This sentences has capitalized examples, e.g. Company A.", undefined],
@@ -74,9 +100,12 @@ describe("sentences-per-line", () => {
 		],
 		["| Table. | Sentence Two. |", undefined],
 		["| Table. With Sentences. | Sentence Two. |", undefined],
+		["| Table! With Sentences? | Sentence Two. |", undefined],
 		["  | Indented Table. With Sentences. | Sentence Two. |", undefined],
+		["  | Indented Table! With Sentences? | Sentence Two! |", undefined],
 		["`Abc. Def.`", undefined],
 		["`Abc.` Def.", undefined],
+		["`Abc?` Def.", undefined],
 		["`Abc.` `Def.`", undefined],
 		["``Abc.`` Def.", undefined],
 		[
