@@ -64,6 +64,38 @@ describe("sentences-per-line", () => {
 		["Continuation... of this topic.", undefined],
 		["This sentences has capitalized examples, e.g. Company A.", undefined],
 		["This sentences has capitalized examples, ie. Company A.", undefined],
+		["This sentences has capitalized examples (eg. Company A).", undefined],
+		["This sentences has capitalized examples (ex. Company A).", undefined],
+		// Test that words ending in ignored word patterns are still caught
+		[
+			"This is complex. Another sentence.",
+			"comple",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 17,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"This is a movie. Another sentence.",
+			"a movi",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 17,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		// Test edge case: "ex" at start of line (word boundary)
+		["ex. This should not trigger.", undefined],
+		["Ex. This should not trigger.", undefined],
 		["# Level 1 Header.", undefined],
 		["# Level 1 Header. With Sentences.", undefined],
 		["#### Level 4 Header.", undefined],
@@ -122,6 +154,12 @@ describe("sentences-per-line", () => {
 			},
 		],
 		["```js```.", undefined],
+		// Test for malformed inline code: backticks extending to end of line
+		["Abc. ```", undefined],
+		["Def. ````", undefined],
+		// Test for malformed inline code: unclosed backtick
+		["Abc. `Def", undefined],
+		["Ghi. ``Jkl", undefined],
 		[
 			`
 \`\`\`plaintext

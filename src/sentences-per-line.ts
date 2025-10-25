@@ -52,9 +52,24 @@ const ignoredWords = ["ie", "i.e", "eg", "e.g", "etc", "ex"];
 
 const isAfterIgnoredWord = (line: string, i: number) => {
 	for (const ignoredWord of ignoredWords) {
-		if (
-			ignoredWord === line.substring(i - ignoredWord.length, i).toLowerCase()
-		) {
+		const startPos = i - ignoredWord.length;
+		if (startPos < 0) {
+			continue;
+		}
+
+		if (ignoredWord === line.substring(startPos, i).toLowerCase()) {
+			// Check if there's a word boundary before the ignored word
+			if (startPos === 0) {
+				// At the start of the line
+				return true;
+			}
+
+			const charBefore = line[startPos - 1];
+			// Not a word boundary if the character before is alphanumeric
+			if (/[a-z0-9]/i.test(charBefore)) {
+				continue;
+			}
+
 			return true;
 		}
 	}
