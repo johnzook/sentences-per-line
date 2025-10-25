@@ -1,5 +1,5 @@
 {
-	"name": "sentences-per-line",
+	"name": "@johnzook/sentences-per-line",
 	"version": "0.3.0",
 	"description": "Contributed markdownlint rule for limiting sentences per line. 📐",
 	"keywords": [
@@ -13,13 +13,19 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/JoshuaKGoldberg/sentences-per-line"
+		"url": "https://github.com/johnzook/sentences-per-line"
 	},
 	"license": "MIT",
 	"author": {
-		"name": "JoshuaKGoldberg",
-		"email": "npm@joshuakgoldberg.com"
+		"name": "John Zook",
+		"email": "owner-sell3h@icloud.com"
 	},
+	"contributors": [
+		{
+			"name": "JoshuaKGoldberg",
+			"email": "npm@joshuakgoldberg.com"
+		}
+	],
 	"type": "commonjs",
 	"exports": {
 		".": {
