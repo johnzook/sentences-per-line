@@ -198,6 +198,177 @@ Abc. Def.
 				lineNumber: 6,
 			},
 		],
+		// Test for escaped backticks in inline code
+		[
+			"Text with `esc\\`aped` code. Another sentence.",
+			"d` code. Anoth",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 28,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		["Has `code\\` here.", undefined],
+		[
+			"Text `a\\`b` word. Next sentence.",
+			"b` word. Next ",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 18,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		// Test for multiple sentences with mixed punctuation
+		[
+			"First! Second sentence.",
+			"First! Secon",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 7,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"First sentence? Second.",
+			"entence? Secon",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 16,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"What?! Another sentence.",
+			"What?! Anoth",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 7,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		// Ellipsis DOES trigger (last period followed by space + capital)
+		[
+			"Wait... Another.",
+			"Wait... Anoth",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 8,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		["Wait... more text.", undefined],
+		// Test edge cases at line length boundaries - short sentences still trigger
+		[
+			"A. B",
+			"A. B",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 3,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"Ab. C",
+			"Ab. C",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 4,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		["A.  ", undefined],
+		[
+			"Xy. Z",
+			"Xy. Z",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 4,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		// Test lowercase after period (should NOT trigger - by design)
+		["First. second", undefined],
+		["Sentence. another", undefined],
+		["End. lowercase", undefined],
+		// Test non-ASCII characters (documents ASCII-only behavior)
+		["Café. Über", undefined],
+		["Test. Ñovel", undefined],
+		["Text. Émile", undefined],
+		// Test empty and whitespace-only lines
+		["", undefined],
+		["   ", undefined],
+		["	", undefined],
+		["  	  ", undefined],
+		// Test case variations of ignored words
+		["Example, IE. Something", undefined],
+		["Example, I.E. Something", undefined],
+		["Text, ETC. Next", undefined],
+		["Uses EG. Company", undefined],
+		["Uses E.G. Company", undefined],
+		// Test multiple inline code segments on same line
+		["`code1` text `code2` more.", undefined],
+		[
+			"`code1` text. `code2` Sentence. Another.",
+			"entence. Anoth",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 32,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"`a` sentence one. Sentence two. `b` end.",
+			"nce one. Sente",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 18,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
 	] as const)("%s", (input, errorContext, report?) => {
 		const actual = markdownlint.lint({
 			config: {

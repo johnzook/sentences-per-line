@@ -35,6 +35,9 @@ const getNextIndexNotInCode = (line: string, i: number) => {
 		if (line[i - 1] !== "\\") {
 			break;
 		}
+
+		// Skip past the escaped backtick to avoid infinite loop
+		i += 1;
 	}
 
 	while (line[i] === "`") {
