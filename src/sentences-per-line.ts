@@ -119,7 +119,7 @@ const visitLine = (
 				onError,
 				lineNumber,
 				undefined,
-				line.slice(Math.max(0, i - 7), 14),
+				line.slice(Math.max(0, i - 7), i + 7),
 				undefined,
 				{
 					deleteCount: 1,

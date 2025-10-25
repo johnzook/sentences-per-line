@@ -69,7 +69,7 @@ describe("sentences-per-line", () => {
 		// Test that words ending in ignored word patterns are still caught
 		[
 			"This is complex. Another sentence.",
-			"comple",
+			"complex. Anoth",
 			{
 				fixInfo: {
 					deleteCount: 1,
@@ -82,7 +82,7 @@ describe("sentences-per-line", () => {
 		],
 		[
 			"This is a movie. Another sentence.",
-			"a movi",
+			"a movie. Anoth",
 			{
 				fixInfo: {
 					deleteCount: 1,
@@ -119,7 +119,7 @@ describe("sentences-per-line", () => {
 		["  11. List.", undefined],
 		[
 			"  11. List. With Sentences.",
-			"1. List. Wi",
+			"1. List. With ",
 			{
 				fixInfo: {
 					deleteCount: 1,
@@ -142,7 +142,7 @@ describe("sentences-per-line", () => {
 		["``Abc.`` Def.", undefined],
 		[
 			"`Abc.` Def. Ghi",
-			"c.` Def. Gh",
+			"c.` Def. Ghi",
 			{
 				fixInfo: {
 					deleteCount: 1,
