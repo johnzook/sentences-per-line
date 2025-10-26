@@ -1,6 +1,6 @@
 {
 	"name": "@johnzook/sentences-per-line",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "Contributed markdownlint rule for limiting sentences per line. 📐",
 	"keywords": [
 		"line",

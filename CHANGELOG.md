@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1](https://github.com/johnzook/sentences-per-line/compare/0.4.0...0.4.1) (2025-10-26)
+
+### Bug Fixes
+
+- use explicit path in lint:md script ([223834f](https://github.com/johnzook/sentences-per-line/commit/223834f28d5a4c6a52c403b8f684ea7f673dce47))
+
 > **Note:** This is a maintained fork of [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line).
 > Versions 0.4.0 and later are from the fork at [@johnzook/sentences-per-line](https://github.com/johnzook/sentences-per-line).
 > Earlier versions are from the original repository.
