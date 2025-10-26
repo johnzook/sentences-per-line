@@ -7,13 +7,21 @@
 		"node_modules",
 		"pnpm-lock.yaml"
 	],
+	"overrides": [
+		{
+			"filename": "**/*.test.ts",
+			"includeRegExpList": ["CStyleComment", "BlockComment", "LineComment"]
+		}
+	],
 	"words": [
 		"allcontributors",
 		"apexskier",
 		"automerge",
+		"johnzook",
 		"knip",
 		"mtfoley",
 		"tada",
-		"tseslint"
+		"tseslint",
+		"Zook"
 	]
 }

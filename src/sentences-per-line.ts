@@ -110,7 +110,7 @@ const visitLine = (
 
 		// Conservatively identify the break between two sentences.
 		// Any sentence ending character followed by space and capital letter.
-		// It does not break on double space, or other whitespace seperators.
+		// It does not break on double space, or other whitespace separators.
 		// Assumes all sentences start with a capital letter.
 		if (
 			(line[i] === "." || line[i] === "!" || line[i] === "?") &&
