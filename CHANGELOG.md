@@ -1,3 +1,20 @@
+# Changelog
+
+# 0.4.0 (2025-10-26)
+
+### Bug Fixes
+
+- correct error context generation for sentence boundaries ([62eedc8](https://github.com/johnzook/sentences-per-line/commit/62eedc811f15e2f02b0ef1764300c0877e2439dd))
+- explicitly indicate parser: none ([72d28b8](https://github.com/johnzook/sentences-per-line/commit/72d28b84af5277bf5249f43d1a7ebd6b663da673))
+- infinite loop on escaped backticks + comprehensive edge case tests ([c3daee1](https://github.com/johnzook/sentences-per-line/commit/c3daee1f9af2c9ae0a3b4afa82c9de254c2dc00d))
+- word boundary check for abbreviation detection ([1295bb7](https://github.com/johnzook/sentences-per-line/commit/1295bb7dc3b8720a394fc8de0ca04f2e79459470))
+
+### Features
+
+- account for ! and ? as sentence seperators ([673d3d6](https://github.com/johnzook/sentences-per-line/commit/673d3d6104c8ce1e6309cc2e0c15089544df38e6))
+- add auto-fixes ([#637](https://github.com/johnzook/sentences-per-line/issues/637)) ([5d5536e](https://github.com/johnzook/sentences-per-line/commit/5d5536e4a8424dfdb2c01c9ad6b01613cee719ed)), closes [#24](https://github.com/johnzook/sentences-per-line/issues/24)
+- do not split sentences inside of a table ([4689e7e](https://github.com/johnzook/sentences-per-line/commit/4689e7e8817dc7f6885488ee64e39fed1b0fb00d))
+
 # [0.3.0](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/0.2.2...0.3.0) (2024-12-13)
 
 ### Features
@@ -9,8 +26,6 @@
 ### Bug Fixes
 
 - explicitly indicate parser: none ([72d28b8](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/72d28b84af5277bf5249f43d1a7ebd6b663da673))
-
-# Changelog
 
 ### [1.27.12](https://github.com/JoshuaKGoldberg/template-typescript-node-package/compare/v1.27.11...v1.27.12) (2022-12-31)
 
