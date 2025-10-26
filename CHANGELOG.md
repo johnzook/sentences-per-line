@@ -1,5 +1,9 @@
 # Changelog
 
+> **Note:** This is a maintained fork of [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line).
+> Versions 0.4.0 and later are from the fork at [@johnzook/sentences-per-line](https://github.com/johnzook/sentences-per-line).
+> Earlier versions are from the original repository.
+
 # 0.4.0 (2025-10-26)
 
 ### Bug Fixes
